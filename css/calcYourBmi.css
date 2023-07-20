@@ -83,7 +83,7 @@ tbody tr:nth-of-type(odd) {
   height: 100vh;
   margin: 0 auto;
 }
-@media (max-width: 604px) {
+@media (max-width: 1135px) {
   .container {
     height: unset;
   }
@@ -93,7 +93,7 @@ tbody tr:nth-of-type(odd) {
   border: 10px dotted #000;
   padding: 10px;
 }
-@media (max-width: 604px) {
+@media (max-width: 1135px) {
   .container .all-object {
     margin: 30px 0;
   }
