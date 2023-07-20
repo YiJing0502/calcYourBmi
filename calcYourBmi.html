@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI計算機</title>
+    <link rel="stylesheet" href="./css/calcYourBmi.css">
+
+</head>
+
+<body>
+    <div class="container column-center">
+        <div class="all-object">
+            <header class="column-center">
+                <h1>BMI計算機</h1>
+                <h2>身體質量指數(Body Mass Index，簡稱BMI)是公認來估計肥胖程度的方法</h2>
+                <h3>BMI=體重(公斤)/身高的平方(公尺)</h3>
+            </header>
+            <main class="">
+                <div class="flex j-c-center a-i-center">
+                    <h4>我的身高：</h4><input id="how-tall" type="number" min="1" max="300">       <h4>公分</h4>
+                    <h4 class="m-l-30">我的體重：</h4><input id="how-heavy" type="number" min="1" max="3000">
+                    <h4>公斤</h4>
+        
+                    <button id="calc-value">計算數值</button>
+        
+                    <button id="reset-value">重新填寫</button>
+                    
+
+                </div>
+
+    
+                <div id="bmi-result"></div>
+
+    
+                <table class="">
+                    <thead>
+                        <tr>
+                            <th colspan="3">BMI值
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>性別</td>
+                            <td>男性</td>
+                            <td>女性</td>
+                        </tr>
+                        <tr>
+                            <td>體重過輕</td>
+                            <td>
+                                <20 </td>
+                            <td>
+                                <19 </td>
+                        </tr>
+                        <tr>
+                            <td>正常範圍</td>
+                            <td> 20-25 </td>
+                            <td> 19-25 </td>
+                        </tr>
+                        <tr>
+                            <td>體重過重</td>
+                            <td> 25-30 </td>
+                            <td> 25-30 </td>
+                        </tr>
+                        <tr>
+                            <td>肥胖</td>
+                            <td> 30-40 </td>
+                            <td> 30-40 </td>
+                        </tr>
+                        <tr>
+                            <td>病態肥胖</td>
+                            <td> >40 </td>
+                            <td> >40 </td>
+                        </tr>
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>
+            </main>
+            <footer></footer>
+        </div>
+    </div>
+
+
+    <script>
+        var howTall = document.querySelector('#how-tall');
+        var howHeavy = document.querySelector('#how-heavy');
+        var calcValue = document.querySelector('#calc-value');
+        var resetValue = document.querySelector('#reset-value');
+        var bmiResult = document.querySelector('#bmi-result');
+
+        calcValue.addEventListener('click', function () {
+            var howTall_num = howTall.value / 100;
+            var howHeavy_num = howHeavy.value * 1;
+            var bmi_num = howHeavy_num / howTall_num;
+
+            bmiResult.innerText = bmi_num.toFixed(0);
+        })
+        resetValue.addEventListener('click', function () {
+            howTall.value = '';
+            howHeavy.value = '';
+            bmiResult.innerText = '';
+        })
+    </script>
+
+
+</body>
+
+</html>
