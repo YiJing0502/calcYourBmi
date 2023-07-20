@@ -18,16 +18,20 @@
                 <h3>BMI=體重(公斤)/身高的平方(公尺)</h3>
             </header>
             <main class="">
-                <div class="flex j-c-center a-i-center">
-                    <h4>我的身高：</h4><input id="how-tall" type="number" min="1" max="300">       <h4>公分</h4>
-                    <h4 class="m-l-30">我的體重：</h4><input id="how-heavy" type="number" min="1" max="3000">
-                    <h4>公斤</h4>
-        
-                    <button id="calc-value">計算數值</button>
-        
-                    <button id="reset-value">重新填寫</button>
-                    
+                <div class="flex j-c-center a-i-center flex-wrap">
+                    <div class="how-tall">
+                        <h4>我的身高：<input id="how-tall" type="number" min="1" max="300">
+                        公分</h4>
+                    </div>
+                    <div class="how-heavy">
+                        <h4 class="m-l-30">我的體重：<input id="how-heavy" type="number" min="1" max="3000">
+                        公斤</h4>
+                    </div>
+                    <div class="user-btn">
+                        <button id="calc-value">計算數值</button>
+                        <button id="reset-value">重新填寫</button>
 
+                    </div>
                 </div>
 
     
@@ -95,7 +99,7 @@
             var howHeavy_num = howHeavy.value * 1;
             var bmi_num = howHeavy_num / howTall_num;
 
-            bmiResult.innerText = bmi_num.toFixed(0);
+            bmiResult.innerText = bmi_num.toFixed(1);
         })
         resetValue.addEventListener('click', function () {
             howTall.value = '';

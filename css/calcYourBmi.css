@@ -38,12 +38,21 @@ th {
   border: 1px dotted #333;
 }
 
+tbody tr:nth-of-type(odd) {
+  background: #000;
+  color: #fff;
+}
+
 .inline-block {
   display: inline-block;
 }
 
 .flex {
   display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .f-d-column {
@@ -74,10 +83,23 @@ th {
   height: 100vh;
   margin: 0 auto;
 }
+@media (max-width: 604px) {
+  .container {
+    height: unset;
+  }
+}
 .container .all-object {
   width: 100%;
   border: 10px dotted #000;
   padding: 10px;
+}
+@media (max-width: 604px) {
+  .container .all-object {
+    margin: 30px 0;
+  }
+}
+.container .all-object header h1 {
+  font-size: 40px;
 }
 .container .all-object main #bmi-result {
   width: 80%;
@@ -89,6 +111,29 @@ th {
   text-align: center;
   line-height: 50px;
   border-radius: 50px;
+}
+@media (max-width: 593px) {
+  .container .all-object main .how-tall h4 {
+    margin: 0;
+  }
+}
+@media (max-width: 593px) {
+  .container .all-object main .how-heavy h4 {
+    width: 300px;
+    margin-left: unset;
+    margin: 20px 0;
+  }
+}
+@media (max-width: 926px) {
+  .container .all-object main .user-btn {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin-bottom: 20px;
+  }
+  .container .all-object main .user-btn button {
+    margin-left: unset;
+  }
 }
 .container .all-object main table {
   margin: 30px auto;
