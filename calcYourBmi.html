@@ -97,7 +97,7 @@
         calcValue.addEventListener('click', function () {
             var howTall_num = howTall.value / 100;
             var howHeavy_num = howHeavy.value * 1;
-            var bmi_num = howHeavy_num / howTall_num;
+            var bmi_num = howHeavy_num / (parseFloat(howTall_num * howTall_num));
 
             bmiResult.innerText = bmi_num.toFixed(1);
         })
