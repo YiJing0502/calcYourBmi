@@ -8,6 +8,7 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0;
+  background: #f6f6f6;
 }
 
 h2, h3, h4 {
@@ -38,9 +39,13 @@ th {
   border: 1px dotted #333;
 }
 
+input[type=radio] {
+  accent-color: #000000;
+}
+
 tbody tr:nth-of-type(odd) {
-  background: #000;
-  color: #fff;
+  background: white;
+  color: #000000;
 }
 
 .inline-block {
@@ -100,6 +105,24 @@ tbody tr:nth-of-type(odd) {
 }
 .container .all-object header h1 {
   font-size: 40px;
+}
+.container .all-object header h2 {
+  margin: 0;
+}
+.container .all-object main .gender {
+  margin: 0 auto;
+}
+@media (max-width: 590px) {
+  .container .all-object main .gender {
+    margin: 0 auto 20px;
+  }
+}
+.container .all-object main .gender div {
+  height: 50px;
+}
+.container .all-object main .gender span {
+  font-size: 20px;
+  font-weight: 600;
 }
 .container .all-object main #bmi-result {
   width: 80%;

@@ -18,14 +18,22 @@
                 <h3>BMI=體重(公斤)/身高的平方(公尺)</h3>
             </header>
             <main class="">
+                <div class="gender flex a-i-center j-c-center flex-wrap">
+                    <div class="flex a-i-center">
+                        <input type="radio" name="gender" value="女"><span>女性</span>
+                    </div>
+                    <div class="flex a-i-center">
+                        <input type="radio" name="gender" value="男"><span>男性</span>
+                    </div>
+                </div>
                 <div class="flex j-c-center a-i-center flex-wrap">
                     <div class="how-tall">
                         <h4>我的身高：<input id="how-tall" type="number" min="1" max="300">
-                        公分</h4>
+                            公分</h4>
                     </div>
                     <div class="how-heavy">
                         <h4 class="m-l-30">我的體重：<input id="how-heavy" type="number" min="1" max="3000">
-                        公斤</h4>
+                            公斤</h4>
                     </div>
                     <div class="user-btn">
                         <button id="calc-value">計算數值</button>
@@ -33,11 +41,7 @@
 
                     </div>
                 </div>
-
-    
                 <div id="bmi-result"></div>
-
-    
                 <table class="">
                     <thead>
                         <tr>
@@ -52,31 +56,31 @@
                             <td>女性</td>
                         </tr>
                         <tr>
-                            <td>體重過輕</td>
-                            <td>
+                            <td class="items">體重過輕</td>
+                            <td class="male">
                                 <20 </td>
-                            <td>
+                            <td class="female">
                                 <19 </td>
                         </tr>
                         <tr>
-                            <td>正常範圍</td>
-                            <td> 20-25 </td>
-                            <td> 19-25 </td>
+                            <td class="items">正常範圍</td>
+                            <td class="male"> 20-25 </td>
+                            <td class="female"> 19-25 </td>
                         </tr>
                         <tr>
-                            <td>體重過重</td>
-                            <td> 25-30 </td>
-                            <td> 25-30 </td>
+                            <td class="items">體重過重</td>
+                            <td class="male"> 25-30 </td>
+                            <td class="female"> 25-30 </td>
                         </tr>
                         <tr>
-                            <td>肥胖</td>
-                            <td> 30-40 </td>
-                            <td> 30-40 </td>
+                            <td class="items">肥胖</td>
+                            <td class="male"> 30-40 </td>
+                            <td class="female"> 30-40 </td>
                         </tr>
                         <tr>
-                            <td>病態肥胖</td>
-                            <td> >40 </td>
-                            <td> >40 </td>
+                            <td class="items">病態肥胖</td>
+                            <td class="male"> >40 </td>
+                            <td class="female"> >40 </td>
                         </tr>
                     </tbody>
                     <tfoot></tfoot>
@@ -94,17 +98,135 @@
         var resetValue = document.querySelector('#reset-value');
         var bmiResult = document.querySelector('#bmi-result');
 
+        function resetStyles() {
+            // 元件
+            var allItems = document.querySelectorAll('.items');
+            var allMale = document.querySelectorAll('.male');
+            var allFemale = document.querySelectorAll('.female');
+
+            // Reset styles for all items
+            for (var i = 0; i < allItems.length; i++) {
+                allItems[i].style.backgroundColor = '';
+                allItems[i].style.color = '';
+            }
+
+            // Reaet styles for all male and female elements
+            for (var i = 0; i < allMale.length; i++) {
+                allMale[i].style.backgroundColor = '';
+                allMale[i].style.color = '';
+            }
+            for (var i = 0; i < allFemale.length; i++) {
+                allFemale[i].style.backgroundColor = '';
+                allFemale[i].style.color = '';
+            }
+
+        }
+
         calcValue.addEventListener('click', function () {
+
+            // Reset styles before applying new styles
+            resetStyles();
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var howTallValue = howTall.value;
+            var howHeavyValue = howHeavy.value;
+
+            if (!gender) {
+                alert('請選擇性別');
+                return
+            }
+
+            if (!howTallValue || isNaN(howTallValue) || parseFloat(howTallValue) <= 0) {
+                alert('請輸入有效的身高');
+                return
+            }
+
+            if (!howHeavyValue || isNaN(howHeavyValue) || parseFloat(howHeavyValue) <= 0) {
+                alert('請輸入有效的體重');
+                return
+            }
+
+            console.log(gender.value);
+
             var howTall_num = howTall.value / 100;
             var howHeavy_num = howHeavy.value * 1;
             var bmi_num = howHeavy_num / (parseFloat(howTall_num * howTall_num));
+            bmiResult.innerText = bmi_num.toFixed(0);
 
-            bmiResult.innerText = bmi_num.toFixed(1);
+            console.log(bmi_num.toFixed(0));
+
+            genderValue = gender.value;
+
+            var items = document.querySelectorAll('.items');
+            var male = document.querySelectorAll('.male');
+            var female = document.querySelectorAll('.female');
+
+            if (genderValue === '男') {
+                var index;
+                if (bmi_num.toFixed(0) < 20) {
+                    index = 0;
+                } else if (bmi_num.toFixed(0) >= 20 && bmi_num.toFixed(0) <= 25) {
+                    index = 1;
+                } else if (bmi_num.toFixed(0) >= 26 && bmi_num.toFixed(0) <= 30) {
+                    index = 2;
+                } else if (bmi_num.toFixed(0) >= 31 && bmi_num.toFixed(0) <= 40) {
+                    index = 3;
+                } else {
+                    index = 4;
+                }
+
+                tdAllItems(index);
+                tdAllMale(index);
+            }
+
+            if (genderValue === '女') {
+                var index;
+                if (bmi_num.toFixed(0) < 19) {
+                    index = 0;
+                } else if (bmi_num.toFixed(0) >= 19 && bmi_num.toFixed(0) <= 25) {
+                    index = 1;
+                } else if (bmi_num.toFixed(0) >= 26 && bmi_num.toFixed(0) <= 30) {
+                    index = 2;
+                } else if (bmi_num.toFixed(0) >= 31 && bmi_num.toFixed(0) <= 40) {
+                    index = 3;
+                } else {
+                    index = 4;
+                }
+
+                tdAllItems(index);
+                tdAllFemale(index);
+            }
+
+
+            function tdAllItems(index) {
+                items[index].style.backgroundColor = 'black';
+                items[index].style.color = 'white';
+            };
+
+            function tdAllMale(index) {
+                male[index].style.backgroundColor = 'black';
+                male[index].style.color = 'white';
+            };
+
+            function tdAllFemale(index) {
+                female[index].style.backgroundColor = 'black';
+                female[index].style.color = 'white';
+            }
         })
+
+        // 清空數值
         resetValue.addEventListener('click', function () {
             howTall.value = '';
             howHeavy.value = '';
             bmiResult.innerText = '';
+
+            //Clear the gender selection
+            var genderInputs = document.querySelectorAll('input[name="gender"]');
+            genderInputs.forEach(function (input) {
+                input.checked = false;
+            })
+
+            // Reset the styles for items and male/female elements
+            resetStyles();
         })
     </script>
 
