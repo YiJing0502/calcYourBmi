@@ -130,6 +130,8 @@
             var gender = document.querySelector('input[name="gender"]:checked');
             var howTallValue = howTall.value;
             var howHeavyValue = howHeavy.value;
+            // !gender:沒有選擇性別
+            // ！howTallValue: 沒有值
 
             if (!gender) {
                 alert('請選擇性別');
@@ -156,7 +158,8 @@
             console.log(bmi_num.toFixed(0));
 
             genderValue = gender.value;
-
+            
+            //類陣列
             var items = document.querySelectorAll('.items');
             var male = document.querySelectorAll('.male');
             var female = document.querySelectorAll('.female');
