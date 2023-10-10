@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI計算機</title>
     <link rel="stylesheet" href="./css/calcYourBmi.css">
-
 </head>
 
 <body>
@@ -123,10 +122,8 @@
         }
 
         calcValue.addEventListener('click', function () {
-
             // Reset styles before applying new styles
             resetStyles();
-
             var gender = document.querySelector('input[name="gender"]:checked');
             var howTallValue = howTall.value;
             var howHeavyValue = howHeavy.value;
@@ -195,11 +192,9 @@
                 } else {
                     index = 4;
                 }
-
                 tdAllItems(index);
                 tdAllFemale(index);
             }
-
 
             function tdAllItems(index) {
                 items[index].style.backgroundColor = 'black';
